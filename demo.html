@@ -36,29 +36,8 @@ var fiveSecondsAgo = Math.round(now.getTime()/1000) - 5;
 document.getElementById('fiveSecondsAgo').innerHTML = fiveSecondsAgo;
 
 var BeyondJSInstance = new BeyondJS();
-var BeyondJSInstanceNL = new BeyondJS({
-	"locale": {
-		s: "seconde",
-		S: "seconden",
-		m: "minuut",
-		M: "minuten",
-		h: "uur",
-		H: "uren",
-		d: "dag",
-		D: "dagen",
-		w: "week",
-		W: "weken",
-		mo: "maand",
-		MO: "maanden",
-		y: "jaar",
-		Y: "jaren",
-		"default": "zojuist",
-		"prefix": "ongeveer",
-		"past": "geleden",
-		"future": "binnen"}
-});
 
-document.getElementById('fiveSecondsAgoStr').innerHTML = BeyondJSInstanceNL.parse(fiveSecondsAgo);
+document.getElementById('fiveSecondsAgoStr').innerHTML = BeyondJSInstance.parse(fiveSecondsAgo);
 
 var past = new Date(now.getTime() - (3600*24*14*1000));
 var twoWeeksAgo = past.toISOString();
