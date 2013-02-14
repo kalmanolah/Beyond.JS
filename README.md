@@ -1,3 +1,6 @@
+http://kalmanolah.github.com/Beyond.JS
+-
+
 Beyond.JS v1.0.0, by Kalman Olah (http://kalmanolah.net)
 
 Beyond.JS is a simple Javascript library intended for the conversion of absolute timestamps
