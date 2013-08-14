@@ -1,5 +1,5 @@
 /**
- * Beyond.JS v1.0.0, by Kalman Olah (http://kalmanolah.net)
+ * Beyond.JS v1.0.1, by Kalman Olah (http://kalmanolah.net)
  * 
  * Beyond.JS is a simple Javascript library intended for the conversion of absolute timestamps
  * into relative timestamps. It was created as a lightweight alternative for similar libraries,
@@ -15,6 +15,7 @@
  * BeyondJSInstance = new BeyondJS({future, now, lang});
  * [OPTIONAL] future(boolean): Whether to allow time differences in the future; defaults to true
  * [OPTIONAL] now(mixed): timestamp representing current time; defaults to current time
+ * [OPTIONAL] locale: an object containing custom locale strings
  */
 var BeyondJS = (function(args){
 	
@@ -38,7 +39,6 @@ var BeyondJS = (function(args){
 				y: "year",
 				Y: "years",
 				"default": "just now",
-				"prefix": "about",
 				"past": "ago",
 				"future": "from now"
 			}
@@ -85,10 +85,6 @@ var BeyondJS = (function(args){
 		
 		// If a Date object has been created, return a parsed string using the Date object's UNIX timestamp
 		return that.parseUnix(Math.round(d.getTime()/1000));
-		
-		// If all else fails, return null
-		return null;
-		
 	});
 
 	
@@ -142,8 +138,8 @@ var BeyondJS = (function(args){
 		// If the time difference is less than a second, return the default string
 		if(str==0) return that.cfg.locale["default"];
 		
-		// Return the string, complete with prefix and suffix
-		return that.cfg.locale["prefix"] + " " + str + " " + that.cfg.locale[end] + " " + that.cfg.locale[(diff<0?"past":"future")];
+		// Return the string, complete with suffix
+		return str + " " + that.cfg.locale[end] + " " + that.cfg.locale[(diff<0?"past":"future")];
 		
 	});
 	
