@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beyond.JS testing page!</title>
+</head>
+<body>
+<div id="content"></div>
+<script src="beyond.js"></script>
+<script>
+    // Helper functions
+    function deb(str, c) {
+        var el = document.getElementById('content');
+
+        if (c) {
+            str = '<span style="color:' + c + ';">' + str + '</span>';
+        }
+
+        el.innerHTML += '<p>' + str + '</p>';
+    }
+
+    deb('Running tests...', 'orange');
+
+    // Beyond.JS instance creation
+    deb('Attempting to create new Beyond.JS instance...');
+    var BJS = new BeyondJS();
+    deb('Beyond.JS instance successfully created!', 'green');
+
+    // UNIX timestamp
+    var unix = 1360827501;
+    deb('Attempting to parse UNIX timestamp "' + unix + '"...');
+    var parsed = BJS.parse(unix);
+    deb('Parsed successfully. Result: "' + parsed + '".', 'green');
+
+    // ISO timestamp
+    var iso = '2013-05-31T07:40:22.105Z';
+    deb('Attempting to parse ISO timestamp "' + iso + '"...');
+    var parsed = BJS.parse(iso);
+    deb('Parsed successfully. Result: "' + parsed + '".', 'green');
+
+    // UTC timestamp
+    var utc = 'Thu, 31 December 2013 07:42:11 GMT';
+    deb('Attempting to parse UTC timestamp "' + utc + '"...');
+    var parsed = BJS.parse(utc);
+    deb('Parsed successfully. Result: "' + parsed + '".', 'green');
+
+    deb('All tests ran successfully! See something out of place? If so, Beyond.JS is probably broken.', 'orange');
+</script>
+</body>
+</html>
